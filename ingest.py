@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing import Iterable
 
-from langchain_chroma import Chroma
+try:
+    from langchain_chroma import Chroma
+except ImportError:  # Backward compatibility if langchain-chroma isn't installed
+    from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
